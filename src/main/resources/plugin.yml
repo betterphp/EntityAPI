@@ -1,0 +1,4 @@
+name: EntityAPI
+version: 0.1
+main: uk.co.jacekk.bukkit.entityapi.EntityAPI
+load: startup
