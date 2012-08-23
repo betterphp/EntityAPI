@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import uk.co.jacekk.bukkit.entityapi.EntityAPI;
 import uk.co.jacekk.bukkit.entityapi.ai.APINavigation;
+import uk.co.jacekk.bukkit.entityapi.ai.APIPathfinderGoal;
 
 import net.minecraft.server.EntityBlaze;
 import net.minecraft.server.EntityLiving;
@@ -127,6 +128,14 @@ public class APIEntityBlaze extends EntityBlaze implements APIEntity {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public void addGoalSelector(APIPathfinderGoal selector){
+		this.goalSelector.a(10, selector);
+	}
+	
+	public void addTargetSelector(APIPathfinderGoal selector){
+		this.targetSelector.a(10, selector);
 	}
 	
 }

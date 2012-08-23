@@ -2,6 +2,8 @@ package uk.co.jacekk.bukkit.entityapi.entity;
 
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
+import uk.co.jacekk.bukkit.entityapi.ai.APIPathfinderGoal;
+
 public interface APIEntity {
 	
 	/**
@@ -85,5 +87,19 @@ public interface APIEntity {
 	 * @return	If the entity can swim.
 	 */
 	public boolean getCanSwim();
+	
+	/**
+	 * Adds a new goal selector.
+	 * 
+	 * @param selector	The goal selector to add.
+	 */
+	public void addGoalSelector(APIPathfinderGoal selector);
+	
+	/**
+	 * Adds a new target selector.
+	 * 
+	 * @param selector	The target selector to add.
+	 */
+	public void addTargetSelector(APIPathfinderGoal selector);
 	
 }

@@ -8,6 +8,7 @@ import org.bukkit.plugin.Plugin;
 
 import uk.co.jacekk.bukkit.entityapi.EntityAPI;
 import uk.co.jacekk.bukkit.entityapi.ai.APINavigation;
+import uk.co.jacekk.bukkit.entityapi.ai.APIPathfinderGoal;
 import net.minecraft.server.EntityLiving;
 import net.minecraft.server.EntitySheep;
 import net.minecraft.server.Navigation;
@@ -126,6 +127,14 @@ public class APIEntitySheep extends EntitySheep implements APIEntity {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public void addGoalSelector(APIPathfinderGoal selector){
+		this.goalSelector.a(10, selector);
+	}
+	
+	public void addTargetSelector(APIPathfinderGoal selector){
+		this.targetSelector.a(10, selector);
 	}
 	
 }
