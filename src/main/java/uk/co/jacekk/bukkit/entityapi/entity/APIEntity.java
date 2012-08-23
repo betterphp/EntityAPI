@@ -26,4 +26,64 @@ public interface APIEntity {
 	 */
 	public double getMovementSpeedMultiplier();
 	
+	/**
+	 * If true the entity will not follow a path that passes through water blocks.
+	 * 
+	 * @param avoidWater	If the entity should avoid water.
+	 */
+	public void setAvoidsWater(boolean avoidWater);
+	
+	/**
+	 * @return	If the entity should avoid water.
+	 */
+	public boolean getAvoidsWater();
+	
+	/**
+	 * Sets if the entity is able to pass through closed doors, this does not necessarily mean that they will break doors.
+	 * 
+	 * @param breakDoors	If the entity should break doors.
+	 */
+	public void setBreakDoors(boolean breakDoors);
+	
+	/**
+	 * @return	If the entity should break doors.
+	 */
+	public boolean getBreakDoors();
+	
+	/**
+	 * Sets if the entity is able to pass through open doors.
+	 * 
+	 * @param enterDoors	If the entity should go through open doors.
+	 */
+	public void setEnterDoors(boolean enterDoors);
+	
+	/**
+	 * @return	If the entity should go through open doors.
+	 */
+	public boolean getEnterDoors();
+	
+	/**
+	 * Sets id the entity should follow a path that is exposed to direct sunlight.
+	 * 
+	 * @param avoidSun	If the entity should avoid sunlight.
+	 */
+	public void setAvoidSun(boolean avoidSun);
+	
+	/**
+	 * @return	If the entity should avoid sunlight.
+	 */
+	public boolean getAvoidSun();
+	
+	/**
+	 * Sets if the swimming AI should be applied to this entity, if it is it will move upwards when in water.
+	 * 
+	 * @param canSwim	If the entity can swim.
+	 */
+	public void setCanSwim(boolean canSwim);
+	
+	/**
+	 * @return	If the entity can swim.
+	 */
+	public boolean getCanSwim();
+	
 }
