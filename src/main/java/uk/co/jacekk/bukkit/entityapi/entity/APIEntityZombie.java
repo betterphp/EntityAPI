@@ -1,25 +1,25 @@
 package uk.co.jacekk.bukkit.entityapi.entity;
 
 import java.lang.reflect.Field;
-import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.plugin.Plugin;
 
 import uk.co.jacekk.bukkit.entityapi.EntityAPI;
-import uk.co.jacekk.bukkit.entityapi.ai.APIPathfinderGoal;
+import uk.co.jacekk.bukkit.entityapi.ai.APINavigation;
+import net.minecraft.server.EntityLiving;
 import net.minecraft.server.EntityZombie;
-import net.minecraft.server.PathfinderGoal;
 import net.minecraft.server.World;
 
 public class APIEntityZombie extends EntityZombie implements APIEntity {
 	
 	private EntityAPI plugin;
 	
-	private List<PathfinderGoal> goalSelectors;
-	private List<PathfinderGoal> targetSelectors;
+	private SpawnReason spawnReason;
+	private double speedMultiplier;
 	
-	public APIEntityZombie(World world){
+	public APIEntityZombie(World world, SpawnReason spawnReason){
 		super(world);
 		
 		Plugin plugin = Bukkit.getPluginManager().getPlugin("EntityAPI");
@@ -29,27 +29,38 @@ public class APIEntityZombie extends EntityZombie implements APIEntity {
 		}
 		
 		this.plugin = (EntityAPI) plugin;
+		this.spawnReason = spawnReason;
+		this.speedMultiplier = 1.0d;
 		
 		try{
-			Field goala = this.goalSelector.getClass().getDeclaredField("a");
-			goala.setAccessible(true);
-			this.goalSelectors = (List<PathfinderGoal>) goala.get(this.goalSelector);
+			Field navigation = EntityLiving.class.getDeclaredField("navigation");
+			navigation.setAccessible(true);
+			navigation.set(this, new APINavigation(this, this.world, 16.0f));
 			
-			Field targeta = this.targetSelector.getClass().getDeclaredField("a");
-			targeta.setAccessible(true);
-			this.targetSelectors = (List<PathfinderGoal>) targeta.get(this.targetSelector);
+			this.getNavigation().b(true);
 		}catch (Exception e){
 			e.printStackTrace();
-			this.world.removeEntity(this);
 		}
 	}
 	
-	public void addGoalSelector(APIPathfinderGoal selector){
-		this.goalSelector.a(this.goalSelectors.size(), selector);
+	public APIEntityZombie(World world){
+		this(world, SpawnReason.DEFAULT);
 	}
 	
-	public void addTargetSelector(APIPathfinderGoal selector){
-		this.goalSelector.a(this.goalSelectors.size(), selector);
+	public SpawnReason getSpawnReason(){
+		return this.spawnReason;
+	}
+	
+	public void setMovementSpeedMultiplier(double multiplier) throws IllegalArgumentException {
+		if (multiplier < 0.0d || multiplier > 8.0d){
+			throw new IllegalArgumentException("The multiplier must be between 0 and 8");
+		}
+		
+		this.speedMultiplier = multiplier;
+	}
+	
+	public double getMovementSpeedMultiplier(){
+		return this.speedMultiplier;
 	}
 	
 }
