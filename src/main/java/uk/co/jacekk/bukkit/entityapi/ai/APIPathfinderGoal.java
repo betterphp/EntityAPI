@@ -15,7 +15,7 @@ public abstract class APIPathfinderGoal extends PathfinderGoal {
 	}
 	
 	@Override
-	public boolean g(){
+	public boolean i(){
 		return this.isContinuous();
 	}
 	

@@ -13,8 +13,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
-import uk.co.jacekk.bukkit.baseplugin.v1.event.BaseListener;
-import uk.co.jacekk.bukkit.entityapi.entity.APIEntityType;
+import uk.co.jacekk.bukkit.baseplugin.v5.event.BaseListener;
 
 public class EntityReplaceListener extends BaseListener<EntityAPI> {
 	

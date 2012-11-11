@@ -9,12 +9,13 @@ import org.bukkit.plugin.Plugin;
 import uk.co.jacekk.bukkit.entityapi.EntityAPI;
 import uk.co.jacekk.bukkit.entityapi.ai.APINavigation;
 import uk.co.jacekk.bukkit.entityapi.ai.APIPathfinderGoal;
+import uk.co.jacekk.bukkit.entityapi.entity.api.APIZombie;
 import net.minecraft.server.EntityLiving;
 import net.minecraft.server.EntityZombie;
 import net.minecraft.server.Navigation;
 import net.minecraft.server.World;
 
-public class APIEntityZombie extends EntityZombie implements APIEntity {
+public class APIEntityZombie extends EntityZombie implements APIZombie {
 	
 	private EntityAPI plugin;
 	

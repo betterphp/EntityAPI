@@ -1,4 +1,4 @@
-package uk.co.jacekk.bukkit.entityapi.entity;
+package uk.co.jacekk.bukkit.entityapi.entity.api;
 
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 

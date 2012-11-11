@@ -4,8 +4,7 @@ import java.lang.reflect.Method;
 
 import net.minecraft.server.EntityTypes;
 
-import uk.co.jacekk.bukkit.baseplugin.v1.BasePlugin;
-import uk.co.jacekk.bukkit.entityapi.entity.APIEntityType;
+import uk.co.jacekk.bukkit.baseplugin.v5.BasePlugin;
 
 public class EntityAPI extends BasePlugin {
 	
